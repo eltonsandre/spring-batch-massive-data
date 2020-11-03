@@ -1,0 +1,72 @@
+server:
+  port: 8090
+
+massive.data:
+  input: ${user.home}/data/input
+  output: ${user.home}/data/output
+  file-type: .dat
+  sufix-result-done: .done
+  delimiter-reader-default: ç
+  delimiter-writer-default: ç
+  watch-dir-input.enabled: true
+  initial-delay-string: PT10S
+  fixed-delay-string: PT20S
+
+info.app:
+  name: '@project.artifactId@'
+  description: '@project.description@'
+  version: '@project.version@'
+
+spring:
+  application.name: massive-batch
+  output.ansi.enabled: ALWAYS
+
+  batch:
+    initialize-schema: ALWAYS
+    job.enabled: false
+
+  datasource:
+    platform: mysql
+    url: jdbc:mysql://localhost:3306/test?useSSL=false&useUnicode=true&characterEncoding=UTF-8
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: user
+    password: passwor
+    schema:
+      - org/springframework/batch/core/schema-drop-mysql.sql
+      - org/springframework/batch/core/schema-mysql.sql
+    initialization-mode: always
+    hikari:
+      pool-name: massive
+      connection-timeout: 6000
+      minimum-idle: 1
+      connection-init-sql: SELECT 1 FROM DUAL
+
+  jpa:
+    generate-ddl: true
+    show-sql: true
+    hibernate.ddl-auto: create
+    properties:
+      hibernate.dialect: org.hibernate.dialect.MySQL57Dialect
+      hibernate.format_sql: false
+      hibernate.jdbc.batch_size: 2500
+      hibernate.order_inserts: true
+      hibernate.validator.fail_fast: false
+      hibernate.generate_statistics: false
+      hibernate.cache.use_query_cache: false
+      hibernate.cache.use_minimal_puts: false
+      hibernate.cache.use_second_level_cache: false
+      hibernate.cache.use_structured_entries: false
+
+management:
+  metrics:
+    tags:
+      application: ${spring.application.name}
+      instance: local
+  endpoints.web.exposure.include: '*'
+
+logging:
+  level:
+    com.github.eltonsandre: INFO
+    org.springframework.cloud.task: ERROR
+    org.springframework.batch.item.data: ERROR
+

@@ -1,0 +1,65 @@
+{
+  "properties": [
+    {
+      "name": "massive.data.resource",
+      "type": "com.github.eltonsandre.dev.massive.configuration.properties.DataResouceProperties",
+      "description": "Configurações paramentrizadas para o processamento dos arquivos massivo"
+    },
+    {
+      "name": "massive.data.resource.input",
+      "type": "java.lang.String",
+      "description": "Path entrada arquivos para processamento massivo",
+      "sourceType": "com.github.eltonsandre.dev.massive.configuration.properties.DataResouceProperties",
+      "defaultValue": "${user.home}/data/input"
+    },
+    {
+      "name": "massive.data.output",
+      "type": "java.lang.String",
+      "description": "Path de saida dos arquivos de resultados do processamento massivo",
+      "sourceType": "com.github.eltonsandre.dev.massive.configuration.properties.DataResouceProperties",
+      "defaultValue": "${user.home}/data/output"
+    },
+    {
+      "name": "massive.data.delimiter-reader-default",
+      "type": "java.lang.String",
+      "sourceType": "com.github.eltonsandre.dev.massive.configuration.properties.DataResouceProperties",
+      "description": "Separador padrão dos campos do arquivo massivo.",
+      "defaultValue": "ç"
+    },
+    {
+      "name": "massive.data.delimiter-writer-default",
+      "type": "java.lang.String",
+      "sourceType": "com.github.eltonsandre.dev.massive.configuration.properties.DataResouceProperties",
+      "description": "Separador padrão dos campos do arquivo massivo.",
+      "defaultValue": "ç"
+    },
+    {
+      "name": "massive.data.sufix-result-done",
+      "type": "java.lang.String",
+      "sourceType": "com.github.eltonsandre.dev.massive.configuration.properties.DataResouceProperties",
+      "description": "Sufix para arquivos de resultado do processamento.",
+      "defaultValue": ".done"
+    },
+    {
+      "name": "massive.data.file-type",
+      "type": "java.lang.String",
+      "sourceType": "com.github.eltonsandre.dev.massive.configuration.properties.DataResouceProperties",
+      "description": "Formato de arquivo a ser processado.",
+      "defaultValue": ".dat"
+    },
+    {
+      "name": "massive.data.initial-delay-string",
+      "type": "java.lang.String",
+      "sourceType": "com.github.eltonsandre.dev.massive.configuration.properties.DataResouceProperties",
+      "description": "Delay para primeira verificação de inclusão do arquivo após o bootstrap (java.time.Duration)",
+      "defaultValue": "PT10S"
+    },
+    {
+      "name": "massive.data.fixed-delay-string",
+      "type": "java.lang.String",
+      "sourceType": "com.github.eltonsandre.dev.massive.configuration.properties.DataResouceProperties",
+      "description": "Delay para verificação de inclusão de arquivo  (java.time.Duration)",
+      "defaultValue": "PT20S"
+    }
+  ]
+}

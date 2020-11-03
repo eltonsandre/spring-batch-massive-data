@@ -1,0 +1,44 @@
+massive.data:
+  input: classpath:/input
+  output: classpath:/output
+  file-type: .dat
+  sufix-result-done: .done
+  delimiter-reader-default: ç
+  delimiter-writer-default: ç
+  initial-delay-string: PT10S
+  fixed-delay-string: PT20S
+
+spring:
+  application.name: massive-batch
+  output.ansi.enabled: ALWAYS
+
+  batch:
+    initialize-schema: ALWAYS
+    job.enabled: false
+
+  datasource:
+    initialization-mode: always
+    url: jdbc:h2:mem:testdb;DB_CLOSE_ON_EXIT=FALSE
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+    platform: h2
+    schema:
+      - org/springframework/batch/core/schema-drop-h2.sql
+      - org/springframework/batch/core/schema-h2.sql
+
+  jpa:
+    generate-ddl: true
+    show-sql: true
+    hibernate.ddl-auto: create
+    properties:
+      hibernate.dialect: org.hibernate.dialect.H2Dialect
+      hibernate.format_sql: false
+      hibernate.jdbc.batch_size: 2500
+      hibernate.order_inserts: true
+      hibernate.validator.fail_fast: false
+      hibernate.generate_statistics: false
+      hibernate.cache.use_query_cache: false
+      hibernate.cache.use_minimal_puts: false
+      hibernate.cache.use_second_level_cache: false
+      hibernate.cache.use_structured_entries: false
